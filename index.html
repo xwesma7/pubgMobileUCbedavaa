@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ücretsiz UC</title>
+  <style>
+   body {
+  background: url("pubg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 50px;
+}
+
+    input, select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    #loading {
+      display: none;
+      font-size: 20px;
+      margin-top: 30px;
+    }
+
+    #nahResult {
+      display: none;
+      margin-top: 40px;
+      position: relative;
+      text-align: center;
+    }
+
+    #nahResult img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .blink {
+      font-size: 28px;
+      color: red;
+      font-weight: bold;
+      position: absolute;  /* Yazıyı videonun üstüne yerleştir */
+      top: -40px;
+      left: 50%;
+      transform: translate(-50%);
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>2025 PUBG UC</h1>
+  <p>Ban riski yok, sınırsız UC!</p>
+
+  <input type="text" id="pubgID" placeholder="PUBG ID'nizi girin"><br>
+  <p id="uyari" style="color: red; display: none; font-weight: bold;"></p>
+  <select id="ucAmount">
+    <option>60 UC</option>
+    <option>300 UC</option>
+    <option>810 UC</option>
+    <option>1800 UC</option>
+  </select><br>
+
+  <button onclick="UC()">Ücretsiz UC Gönder</button>
+
+  <div id="loading">⏳ Sunucuya bağlanılıyor... Lütfen bekleyin...</div>
+
+<div id="nahResult">
+    <p class="blink">Nah alırsın 😎</p>
+    <video id="nahVideo" width="320" height="240" autoplay muted>
+      <source src="nah-video.mp4" type="video/mp4">
+      Tarayıcınız video etiketini desteklemiyor.
+    </video>
+    <p id="video-error" style="color: red; display: none;">Video yüklenemedi. Lütfen dosyanın doğru formatta ve doğru dizinde olduğundan emin olun.</p>
+  </div>
+
+
+  <script>
+    function UC() {
+      const id = document.getElementById("pubgID").value;
+      if (id === "") {
+        alert("ID'yi boş bırakma kardeşim 😒");
+        return;
+      }
+
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("nahResult").style.display = "none";
+
+      setTimeout(() => {
+      document.getElementById("loading").style.display = "none";
+      const nahResult = document.getElementById("nahResult");
+      nahResult.style.display = "block"; // Yazıyı görünür hale getir
+      nahResult.querySelector(".blink").style.display = "inline"; // Blink yazısını da görünür hale getir
+      }, 9000); // 9 saniye sonra yazıyı göster
+    }
+  </script>
+  <script>
+  let muzikBasladi = false;
+
+  document.addEventListener("click", function () {
+    if (!muzikBasladi) {
+      const muzik = document.getElementById("arkaMuzik");
+      muzik.play();
+      muzikBasladi = true;
+    }
+  });
+</script>
+
+  <audio id="arkaMuzik" loop>
+  <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+</body>
+</html>
